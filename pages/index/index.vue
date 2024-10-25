@@ -4,23 +4,49 @@
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
+		<button @click="handleClick">点我</button>
+		<text>我想看水果总数:{{totalNum}}</text>
+		<view v-for="item in list" :key="item.di">
+			<text>{{item.name}}</text>
+			<text>{{item.num}}</text>
+		</view>
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+<script setup>
+	// export default {
+	// 	data() {
+	// 		return {
+	// 			title: 'Hello'
+	// 		}
+	// 	},
+	// 	onLoad() {
 
-		},
-		methods: {
+	// 	},
+	// 	methods: {
 
-		}
+	// 	}
+	// }
+	import {ref,reactive,computed} from 'vue'
+	import {onLoad} from '@dcloudio/uni-app'
+	const title = ref('hello')
+	const list = reactive([
+		{name:'apple',num:1,id:1},
+		{name:'orange',num:1,id:2}
+	])
+	const handleClick=()=>{
+		list.forEach(item=>{
+			item.num++
+		})
 	}
+	const totalNum = computed(()=>{
+		return list.reduce((total,cur)=> total+cur.num ,0)
+	})
+	onLoad(()=>{
+		console.log('onLoad生命周期')
+	})
+	
+	
 </script>
 
 <style>
