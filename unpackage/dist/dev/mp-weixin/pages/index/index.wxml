@@ -1,0 +1,1 @@
+<view class="content"><image class="logo" src="{{a}}"></image><view class="text-area"><text class="title">{{b}}</text></view><button bindtap="{{c}}">点我</button><text>我想看水果总数:{{d}}</text><view wx:for="{{e}}" wx:for-item="item" wx:key="c"><text>{{item.a}}</text><text>{{item.b}}</text></view></view>
